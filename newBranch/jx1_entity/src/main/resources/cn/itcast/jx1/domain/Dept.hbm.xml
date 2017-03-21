@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.jx1.domain.Dept" table="DEPT_P" schema="jx">
+		<id name="id" column="DEPT_ID">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="deptName" column="DEPT_NAME"></property>
+		<property name="state" column="STATE"></property>
+		
+		<many-to-one name="parent" class="cn.itcast.jx1.domain.Dept" column="PARENT_ID"></many-to-one>
+		<set name="users">
+			<key column="DEPT_ID"></key>
+			<one-to-many class="cn.itcast.jx1.domain.User" />
+		</set>
+	</class>
+</hibernate-mapping>
